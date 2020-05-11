@@ -10,6 +10,11 @@ import 'assets/css/global.css';
 import Axios from 'axios';
 // 配置请求根路径
 Axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
+Axios.interceptors.request.use(config => {
+  console.log(config);
+  return config;
+});
+
 Vue.prototype.$http = Axios;
 
 Vue.config.productionTip = false;

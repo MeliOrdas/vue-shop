@@ -78,7 +78,10 @@ export default {
 <style lang="less" scoped>
 /*登陆界面样式*/
 .login_container {
-  background-color: #2b4b6b;
+  background-image: url("../assets/wallhaven.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 1280px 720px;
   height: 100%;
   display: flex;
   display: -webkit-flex;
@@ -89,29 +92,29 @@ export default {
 .login_box {
   width: 450px;
   height: 300px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
   border-radius: 5px;
   position: relative;
-  box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 1px #ddd;
   /* 登录框图片 */
   .avatar_box {
     height: 150px;
     width: 150px;
-    border: 1px solid #eee;
+    border: 1px solid rgba(255, 255, 255, 0);
     border-radius: 50%;
     padding: 10px;
-    box-shadow: 0 0 10px #ddd;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    /* 图片 */
-    img {
-      border-radius: 50%;
-      height: 100%;
-      width: 100%;
-      background-color: #eee;
-    }
+    background-color: rgba(255, 255, 255, 0);
+  }
+  /* 图片 */
+  img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
   }
 }
 
