@@ -1,0 +1,86 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7008891",
+      "name": "addressbook_fill",
+      "font_class": "addressbook_fill",
+      "unicode": "e6e2",
+      "unicode_decimal": 59106
+    },
+    {
+      "icon_id": "7008895",
+      "name": "browse_fill",
+      "font_class": "browse_fill",
+      "unicode": "e6e4",
+      "unicode_decimal": 59108
+    },
+    {
+      "icon_id": "7008908",
+      "name": "computer_fill",
+      "font_class": "computer_fill",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
+      "icon_id": "7008921",
+      "name": "document_fill",
+      "font_class": "document_fill",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    },
+    {
+      "icon_id": "7008943",
+      "name": "group_fill",
+      "font_class": "group_fill",
+      "unicode": "e6ff",
+      "unicode_decimal": 59135
+    },
+    {
+      "icon_id": "7008959",
+      "name": "lock_fill",
+      "font_class": "lock_fill",
+      "unicode": "e709",
+      "unicode_decimal": 59145
+    },
+    {
+      "icon_id": "7008968",
+      "name": "mine_fill",
+      "font_class": "mine_fill",
+      "unicode": "e70e",
+      "unicode_decimal": 59150
+    },
+    {
+      "icon_id": "7008978",
+      "name": "people_fill",
+      "font_class": "people_fill",
+      "unicode": "e715",
+      "unicode_decimal": 59157
+    },
+    {
+      "icon_id": "7009058",
+      "name": "supply",
+      "font_class": "supply",
+      "unicode": "e760",
+      "unicode_decimal": 59232
+    },
+    {
+      "icon_id": "7009061",
+      "name": "commodity",
+      "font_class": "commodity",
+      "unicode": "e764",
+      "unicode_decimal": 59236
+    },
+    {
+      "icon_id": "12990750",
+      "name": "眼睛",
+      "font_class": "yanjing-",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}

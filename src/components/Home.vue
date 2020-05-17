@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 <template>
   <el-container class="home-container">
     <!-- 头部区 -->
@@ -13,41 +14,74 @@
       <!-- 侧边栏 -->
       <el-aside width="200px">
         <!-- 侧边栏菜单 -->
-        <el-menu background-color="#e7e7e7" text-color="#909399" active-text-color="#ffd04b">
+        <el-menu background-color="#e7e7e7" text-color="#909399" active-text-color="skyblue">
           <!-- 一级菜单 -->
-          <el-submenu index="1">
+          <el-submenu :index="item.id + ''" v-for="item in meniulist" :key="item.id">
             <!-- 一级菜单模板区域 -->
             <template slot="title">
               <!-- 图标 -->
-              <i class="el-icon-location"></i>
+              <i :class="iconObj[item.id]"></i>
               <!-- 文本 -->
-              <span>导航一</span>
+              <span>{{item.authName}}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item index="1-4-1">
+            <el-menu-item
+              :index="subItem.id + ''"
+              v-for="subItem in item.children"
+              :key="subItem.id"
+            >
               <template slot="title">
                 <!-- 图标 -->
-                <i class="el-icon-location"></i>
+                <i class="el-icon-menu"></i>
                 <!-- 文本 -->
-                <span>导航一</span>
+                <span>{{subItem.authName}}</span>
               </template>
             </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
       <!-- 右侧内容主体 -->
-      <el-main>右</el-main>
+      <el-main class="login-right">右</el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      meniulist: [],
+      iconObj: {
+        // eslint-disable-next-line quote-props
+        '125': 'iconfont icon-people_fill',
+        // eslint-disable-next-line quote-props
+        '103': 'iconfont icon-supply',
+        // eslint-disable-next-line quote-props
+        '101': 'iconfont icon-commodity',
+        // eslint-disable-next-line quote-props
+        '102': 'iconfont icon-document_fill',
+        // eslint-disable-next-line quote-props
+        '145': 'iconfont icon-computer_fill'
+      }
+    };
+  },
   name: 'Home',
+  created () {
+    this.getMenuList();
+  },
   methods: {
     logout () {
       window.sessionStorage.clear();
       this.$router.push('/login');
+    },
+    // 获取所有菜单
+    async getMenuList () {
+      const { data: res } = await this.$http.get('menus');
+      // console.log(res);
+
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
+      this.meniulist = res.data;
+      console.log(this.meniulist);
     }
   }
 };
@@ -93,9 +127,10 @@ export default {
   margin-top: 40px;
 }
 
-.el-aside {
+.iconfont {
+  margin-right: 10px;
 }
-
-.el-main {
+.login-right {
+  background-color: rgb(231, 231, 231);
 }
 </style>
