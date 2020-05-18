@@ -12,9 +12,17 @@
     <!-- 页面主体区 -->
     <el-container>
       <!-- 侧边栏 -->
-      <el-aside width="200px">
+      <el-aside :width="isCollapse ? '64px' : '200px'">
+        <div class="toggle-button" @click="toggleClick">|||</div>
         <!-- 侧边栏菜单 -->
-        <el-menu background-color="#e7e7e7" text-color="#909399" active-text-color="skyblue">
+        <el-menu
+          background-color="#d3d3d3"
+          text-color="#909399"
+          active-text-color="skyblue"
+          unique-opened
+          :collapse="isCollapse"
+          :collapse-transition="false"
+        >
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for="item in meniulist" :key="item.id">
             <!-- 一级菜单模板区域 -->
@@ -62,7 +70,9 @@ export default {
         '102': 'iconfont icon-document_fill',
         // eslint-disable-next-line quote-props
         '145': 'iconfont icon-computer_fill'
-      }
+      },
+      // 是否折叠
+      isCollapse: false
     };
   },
   name: 'Home',
@@ -82,6 +92,10 @@ export default {
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
       this.meniulist = res.data;
       console.log(this.meniulist);
+    },
+    // 点击按钮切换菜单折叠与展开
+    toggleClick () {
+      this.isCollapse = !this.isCollapse;
     }
   }
 };
@@ -122,15 +136,30 @@ export default {
   }
 }
 
-.el-menu,
-.el-main {
-  margin-top: 40px;
+.el-aside {
+  .el-menu {
+    border-right: none;
+  }
 }
 
 .iconfont {
   margin-right: 10px;
 }
+
 .login-right {
-  background-color: rgb(231, 231, 231);
+  // background-color: rgb(231, 231, 231);
+}
+
+.toggle-button {
+  background-color: #d4d4d4;
+  padding-top: 10px;
+  margin-top: 35px;
+  font-size: 15px;
+  height: 25px;
+  text-align: center;
+  color: #909399;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  border: 0;
 }
 </style>
