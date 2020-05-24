@@ -22,6 +22,8 @@
           unique-opened
           :collapse="isCollapse"
           :collapse-transition="false"
+          :router="true"
+          :default-active="activePath"
         >
           <!-- 一级菜单 -->
           <el-submenu :index="item.id + ''" v-for="item in meniulist" :key="item.id">
@@ -34,9 +36,10 @@
             </template>
             <!-- 二级菜单 -->
             <el-menu-item
-              :index="subItem.id + ''"
+              :index=" '/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
+              @click="SaveNavState( '/' + subItem.path)"
             >
               <template slot="title">
                 <!-- 图标 -->
@@ -49,7 +52,9 @@
         </el-menu>
       </el-aside>
       <!-- 右侧内容主体 -->
-      <el-main class="login-right">右</el-main>
+      <el-main class="login-right">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -72,12 +77,15 @@ export default {
         '145': 'iconfont icon-computer_fill'
       },
       // 是否折叠
-      isCollapse: false
+      isCollapse: false,
+      // 被激活的空地址
+      activePath: ''
     };
   },
   name: 'Home',
   created () {
     this.getMenuList();
+    this.activePath = window.sessionStorage.getItem('activePath');
   },
   methods: {
     logout () {
@@ -96,6 +104,11 @@ export default {
     // 点击按钮切换菜单折叠与展开
     toggleClick () {
       this.isCollapse = !this.isCollapse;
+    },
+    // 保存链接激活的状态
+    SaveNavState (activePath) {
+      window.sessionStorage.setItem('activePath', activePath);
+      this.activePath = activePath;
     }
   }
 };
