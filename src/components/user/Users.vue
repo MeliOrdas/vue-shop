@@ -72,7 +72,7 @@
     </el-card>
 
     <!-- 添加用户对话框 -->
-    <el-dialog title="添加用户" :visible.sync="addDialogVisible" width="50%">
+    <el-dialog title="添加用户" :visible.sync="addDialogVisible" width="50%" @close="addDialogClosed">
       <!-- 内容主体区域 -->
       <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px">
         <el-form-item label="用户名" prop="username">
@@ -94,6 +94,7 @@
         <el-button type="primary" @click="addUser">确 定</el-button>
       </span>
     </el-dialog>
+
     <!-- 修改用户对话框 -->
     <el-dialog title="修改用户" :visible.sync="editDialogVisible" width="50%">
       <el-form :model="editForm" :rules="editFormRules" ref="editFormRef" label-width="70px">
@@ -263,6 +264,8 @@ export default {
     },
     // 点击添加新用户
     addUser () {
+      console.log(this.$refs.addFormRef);
+
       this.$refs.addFormRef.validate(async valid => {
         // 发起添加用户网络请求
         if (!valid) return;

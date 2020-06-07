@@ -99,7 +99,7 @@ export default {
 
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg);
       this.meniulist = res.data;
-      console.log(this.meniulist);
+      // console.log(this.meniulist);
     },
     // 点击按钮切换菜单折叠与展开
     toggleClick () {
