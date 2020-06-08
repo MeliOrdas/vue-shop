@@ -96,6 +96,7 @@ export default {
         roleName: ''
       },
       editRolesVisible: false,
+      // 查询用户信息对象
       rolesForm: {}
 
     };
@@ -111,7 +112,7 @@ export default {
       // this.$message.success('获取列表成功');
       // 数据赋值
       this.rolesList = res.data;
-      console.log(this.rolesList);
+      // console.log(this.rolesList);
     },
 
     // 监听对话框关闭事件
@@ -138,17 +139,18 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).catch(err => err);
-
+      // 取消删除的信息
       if (confirmResult !== 'confirm') {
         return this.$message.info('已经取消删除');
       }
-
+      // 发起删除用户请求
       const { data: res } = await this.$http.delete('roles/' + id);
-      console.log(res);
       if (res.meta.status !== 200) return this.$message.error('删除失败');
       this.$message.success('删除成功');
+      // 刷新列表
       this.getRolesList();
     },
+    // 发起修改角色信息请求
     async showEditRoles (id) {
       const { data: res } = await this.$http.get('roles/' + id);
 
@@ -156,8 +158,16 @@ export default {
       this.rolesForm = res.data;
       this.editRolesVisible = true;
     },
-    editRolseInfo () {
-
+    async editRolseInfo () {
+      // 发起角色编辑事件
+      const { data: res } = await this.$http.put('roles/' + this.rolesForm.roleId, { roleDesc: this.rolesForm.roleDesc, roleName: this.rolesForm.roleName });
+      if (res.meta.status !== 200) return this.$message.error('更新用户失败');
+      // 关闭对话框
+      this.editRolesVisible = false;
+      // 刷新列表
+      this.getRolesList();
+      // 提示修改成功
+      this.$message.success('修改成功！');
     }
   }
 };
