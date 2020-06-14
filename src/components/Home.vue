@@ -123,7 +123,6 @@ export default {
 }
 .home-container {
   height: 100%;
-  background-color: #e7e7e7;
 }
 
 .el-header {
