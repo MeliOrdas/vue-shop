@@ -13,6 +13,8 @@ import './assets/font_alh70fkaxsa/iconfont.css';
 import 'assets/css/global.css';
 // Axios
 import Axios from 'axios';
+// 解决 vue  鼠标事件控制台警告
+import 'default-passive-events';
 // 配置请求根路径
 Axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
 Axios.interceptors.request.use(config => {
