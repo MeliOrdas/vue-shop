@@ -261,6 +261,7 @@ export default {
     this.getUserList();
   },
   methods: {
+    // 刷新列表 重新获取数据+
     async getUserList () {
       const { data: res } = await this.$http.get('users', {
         params: this.queryInfo

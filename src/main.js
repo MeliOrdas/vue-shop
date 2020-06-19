@@ -15,6 +15,7 @@ import 'assets/css/global.css';
 import Axios from 'axios';
 // 解决 vue  鼠标事件控制台警告
 import 'default-passive-events';
+import TreeTable from 'vue-table-with-tree-grid';
 // 配置请求根路径
 Axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
 Axios.interceptors.request.use(config => {
@@ -24,8 +25,8 @@ Axios.interceptors.request.use(config => {
 });
 
 Vue.prototype.$http = Axios;
-
 Vue.config.productionTip = false;
+Vue.component('tree-table', TreeTable);
 
 new Vue({
   router,
