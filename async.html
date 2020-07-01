@@ -7,27 +7,10 @@
   </head>
   <body>
     <script>
-      // function takeLongTime() {
-      //   return new Promise((resolve) => {
-      //     setTimeout(() => resolve("long_time_value"), 1000);
-      //   });
-      // }
-
-      // takeLongTime().then((v) => {
-      //   console.log("got", v);
-      // });
-      function takeLongTime() {
-        return new Promise((resolve) => {
-          setTimeout(() => resolve("long_time_value"), 1000);
-        });
-      }
-
-      async function test() {
-        const v = await takeLongTime();
-        console.log(v);
-      }
-
-      test();
+      let add =
+        '"49吋4K超薄曲面 人工智能,55吋4K观影曲面 30核HDR,55吋4K超薄曲面 人工智能,65吋4K超薄曲面 人工智能"';
+      let addd = add.split(",");
+      console.log(addd);
     </script>
   </body>
 </html>
