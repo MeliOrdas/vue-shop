@@ -2,9 +2,6 @@
   <div class="login_container">
     <div class="login_box">
       <!-- 头像区 -->
-      <div class="avatar_box">
-        <img src="~assets/logo.png" alt />
-      </div>
       <!-- 登录表单区域 -->
       <el-form ref="loginFormRef" :rules="loginFormRules" class="login_form" :model="loginForm">
         <!-- 用户名 -->
@@ -78,13 +75,11 @@ export default {
 <style lang="less" scoped>
 /*登陆界面样式*/
 .login_container {
-  background-image: url("../assets/wallhaven.png");
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: 1280px 720px;
+  background: url("../assets/wallhaven-q6poqd.png") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   height: 100%;
-  display: flex;
-  display: -webkit-flex;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
@@ -92,23 +87,13 @@ export default {
 .login_box {
   width: 450px;
   height: 300px;
-  background-color: rgba(255, 255, 255, 0);
-  border-radius: 5px;
+  // display: flex;
+  background: inherit;
+  z-index: 100;
+  border-radius: 10px;
   position: relative;
-  box-shadow: 0 0 1px #ddd;
-  /* 登录框图片 */
-  .avatar_box {
-    height: 150px;
-    width: 150px;
-    border: 1px solid rgba(255, 255, 255, 0);
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0);
-  }
+  overflow: hidden;
+
   /* 图片 */
   img {
     border-radius: 50%;
@@ -116,6 +101,18 @@ export default {
     width: 100%;
     background-color: #eee;
   }
+}
+.login_box::before {
+  content: "";
+  background: inherit;
+  box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, .25);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(6px);
 }
 
 .login_form {

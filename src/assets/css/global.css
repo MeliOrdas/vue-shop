@@ -1,7 +1,6 @@
 /* 全局样式表 */
-html,
-body,
-#app {
+
+html, body, #app {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -21,10 +20,23 @@ body,
   margin-top: 15px;
   font-size: 12px;
 }
+
 .el-pagination {
   margin-top: 15px;
 }
 
 .el-cascader-menu {
   height: 200px;
+}
+
+.el-steps {
+  margin: 15px 0;
+}
+
+.el-step__title {
+    font-size: 12px;
+}
+
+.ql-editor {
+  min-height: 300px;
 }
